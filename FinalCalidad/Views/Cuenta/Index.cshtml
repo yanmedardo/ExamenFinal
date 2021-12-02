@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+<h2>Cuentas</h2>
+
+<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+    <a id="botonCuenta" class="btn btn-outline-primary" href="/Cuenta/Crear">Crear Cuenta</a>
+
+    <a class="btn btn-outline-primary" href="/Cuenta/RegistrarIngreso"> Registrar Ingreso</a>
+
+    <a class="btn btn-outline-primary" href="/Cuenta/RegistrarGasto"> Registrar Gasto</a>
+
+    <a class="btn btn-outline-primary" href="/Cuenta/TransferenciaCuentas"> Transferencia cuentas</a>
+
+    <a class="btn btn-outline-primary" href="/Cuenta/ListarUsuarios"> Usuarios</a>
+
+    <a class="btn btn-outline-primary" href="/Cuenta/ListarContactos"> Contactos</a>
+    <a class="btn btn-outline-primary" href="/Auth/Logout"> Cerrar sesion</a>
+
+</div>
+
+
+
+
+
+
+<br />
+<br />
+<h3><span class="badge bg-primary">Dinero actual: S/. @ViewBag.Propio</span></h3>
+    @* Prevent text from wrapping with a .text-nowrap class. *@
+<h3><span class="badge bg-primary">Credito: S/. @ViewBag.Credito</span></h3>
+
+<hr />
+<table class="table table-striped" id="TablaCuentas">
+    <thead>
+        <tr>
+            <th>Cuenta</th>
+            <th>Categoria</th>
+            <th>Saldo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cuenta in Model)
+        {
+            <tr>
+                <td>@cuenta.Nombre</td>
+                <td>@cuenta.Categoria</td>
+                <td>S/. @cuenta.Saldo</td>
+                <td>
+                    <a id="botonIngreso" class="btn btn-info" href="/Cuenta/ListarIngresos?id=@cuenta.Id">Ver Ingresos</a>
+
+                    <a id="botonGasto" class="btn btn-info" href="/Cuenta/ListarGastos?id=@cuenta.Id">Ver Gastos</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

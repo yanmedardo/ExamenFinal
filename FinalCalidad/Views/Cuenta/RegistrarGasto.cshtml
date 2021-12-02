@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@{
+    ViewBag.Title = "RegistroGasto";
+}
+
+<h2>Registrar un Gasto</h2>
+
+
+<form method="post" action="/Cuenta/RegistrarGasto">
+    <div class="form-group">
+        <label>Cuenta</label>
+        <select name="CuentaId" class="form-control">
+            <option value="">--- Seleccione una Cuenta ---</option>
+            @foreach (var item in ViewBag.cuentas)
+            {
+                <option value="@item.Id"> @item.Nombre </option>
+            }
+        </select>
+
+    </div>
+
+
+    <div class="form-group">
+        <label>Fecha y hora</label>
+        <input name="FechaHora" class="form-control" />
+        
+    </div>
+
+    <div class="form-group">
+        <label>Descripcion</label>
+        <input name="Descripcion" id="Descripcion" class="form-control" value="@Model.Descripcion" />
+        
+    </div>
+
+    <div class="form-group">
+        <label>Monto</label>
+        <input name="Monto" id="Monto" class="form-control" value="@Model.Monto" />
+        
+    </div>
+
+    <button >Guardar</button>
+</form>

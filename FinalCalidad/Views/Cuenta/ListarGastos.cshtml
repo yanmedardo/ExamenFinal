@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+@{
+    ViewBag.Title = "Listar Gastos";
+}
+<a class="btn btn-danger" href="/Cuenta/Index">Volver a Cuentas</a>
+<hr />
+
+<h2>Gastos de la cuenta: @ViewBag.Cuenta.Nombre</h2>
+
+
+<table class="table table-bordered border-primary">
+    <thead>
+        <tr>
+            <th>Fecha y Hora</th>
+            <th>Descripcion</th>
+            <th>Monto</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var gasto in Model)
+        {
+            <tr>
+                <td>@gasto.FechaHora</td>
+                <td>@gasto.Descripcion</td>
+                <td>@gasto.Monto</td>
+            </tr>
+        }
+    </tbody>
+</table>
